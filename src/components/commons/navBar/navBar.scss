@@ -1,0 +1,39 @@
+.nav-bar-container {
+    background: #069bdb;
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    padding: 0 1rem;
+    box-shadow: 0px 6px 16px rgba(10, 66, 87, 0.0784314);
+    color: #fff;
+
+    .logo-container {
+        img {
+            width: 130px;
+        }
+    }
+
+    .nav-and-tools {
+        display: flex;
+        width: 90%;
+        height: 100%;
+        align-items: center;
+
+        .navigation {
+            width: 65%;
+        }
+
+        .tools-profile {
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 1rem;
+            gap: 20px;
+
+            .icon-container {
+                cursor: pointer;
+            }
+        }
+    }
+}

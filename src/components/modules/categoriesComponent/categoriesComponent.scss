@@ -1,0 +1,131 @@
+.categories-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    .category-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        position: relative;
+
+        &:hover {
+            animation: expandImage 0.5s;
+            animation-iteration-count: 2;
+            animation-direction: alternate;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            background: #000;
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+
+
+        .text-container {
+            position: relative;
+            z-index: 3;
+
+            h1 {
+                color: white;
+            }
+        }
+    }
+
+    .first-banner {
+        height: 400px;
+        width: 100%;
+        // background-image: url(../../../assest/guys.webp);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+    }
+
+    .title-categories {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+        }
+    }
+
+    .first-section {
+        display: grid;
+        width: 100%;
+        height: 20rem;
+        grid-template-columns: repeat(2, 50%);
+
+        .jewelry {
+            background-image: url(../../../assest/joyeria.avif);
+        }
+
+        .cloting {
+            background-image: url(../../../assest/cloting.jpg);
+        }
+
+    }
+
+    .second-section {
+        display: grid;
+        width: 100%;
+        height: 20rem;
+        grid-template-columns: repeat(3, calc(100% / 3));
+
+        .shoes {
+            background-image: url(../../../assest/shoes.jpg);
+        }
+
+        .accessories {
+            background-image: url(../../../assest/accessories.jfif);
+        }
+
+        .handbags {
+            background-image: url(../../../assest/handbags.jpg);
+        }
+    }
+
+    @keyframes expandImage {
+        0% {
+            background-size: 100% 100%
+        }
+
+        20% {
+            background-size: 105% 105%
+        }
+
+        40% {
+            background-size: 110% 110%
+        }
+
+        60% {
+            background-size: 115% 115%
+        }
+
+        80% {
+            background-size: 120% 120%
+        }
+
+        100% {
+            background-size: 125% 125%
+        }
+    }
+}
