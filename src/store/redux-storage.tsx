@@ -3,31 +3,12 @@ import { configureStore } from '@reduxjs/toolkit'
 
 // We'll use redux-logger just as an example of adding another middleware
 import logger from 'redux-logger'
-
-
-const reducer = {
-}
-
-const preloadedState = {
-    todos: [
-        {
-            text: 'Eat food',
-            completed: true,
-        },
-        {
-            text: 'Exercise',
-            completed: false,
-        },
-    ],
-    visibilityFilter: 'SHOW_COMPLETED',
-}
-
+import rootReducer from '../reducers' 
 
 const store = configureStore({
-    reducer,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-    devTools: process.env.NODE_ENV !== 'production',
-    preloadedState,
+    devTools: true,
 })
 
 export default store
