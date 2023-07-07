@@ -1,7 +1,7 @@
 import { IUser } from '../../services/userService/userService'
 import * as types from './types'
 
-export const updateTeachersAction = (teachers: IUser[]) => ({
-    type: types.UPDATE_TEACHERS,
+export const updateStudentsAction = (teachers: IUser[]) => ({
+    type: types.UPDATE_STUDENTS,
     payload: teachers
 })

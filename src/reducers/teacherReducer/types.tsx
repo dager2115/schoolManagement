@@ -1,14 +1,14 @@
-import { ITeacher } from "../../services/teachersService/teachersService"
+import { IUser } from "../../services/userService/userService"
 
 export const UPDATE_TEACHERS = "UPDATE_TEACHERS"
 
 export interface ITeachersState {
-    teachers: ITeacher[]
+    teachers: IUser[]
 }
 
 interface IUpdateTeachersAction {
     type: typeof UPDATE_TEACHERS,
-    payload: ITeacher[]
+    payload: IUser[]
 }
 
 export type ITeacherTypes = IUpdateTeachersAction

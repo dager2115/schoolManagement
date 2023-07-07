@@ -23,6 +23,9 @@ const HomeScreenLayout = () => {
             name: 'Materias',
             route: '/matters-list'
         }, {
+            name: 'Periodos Academicos',
+            route: '/periods'
+        }, {
             name: 'Calificador',
             route: '/qualification-tool'
         },
