@@ -6,6 +6,7 @@ export interface IDataTableProps {
     headerKeys: string[]
     keys: string[]
     actions?: (data: any) => React.ReactNode
+    title: string
 }
 
 class DataTableContainer extends Component<IDataTableProps, any> {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IDataTableProps } from "../containers/dataTableContainer";
-import { Paper, Table, TableHead, TableContainer, TableCell, TableRow, TableBody, TablePagination } from '@mui/material';
+import { Paper, Table, TableHead, TableContainer, TableCell, TableRow, TableBody, TablePagination, Typography } from '@mui/material';
 
 const DataTableLayout = (props: IDataTableProps) => {
 
@@ -27,6 +27,11 @@ const DataTableLayout = (props: IDataTableProps) => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
+                        <TableCell align="center" colSpan={props.actions ? props.keys.length + 1 : props.keys.length}>
+                            <Typography variant="body1" fontWeight={700}>{props.title}</Typography>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
                         {props.headerKeys.map((key) => (
                             <TableCell align="center">{key}</TableCell>
                         ))}
@@ -43,7 +48,7 @@ const DataTableLayout = (props: IDataTableProps) => {
                                 <TableCell align="center">{data[key]}</TableCell>
                             ))}
                             {props.actions ?
-                                <TableCell sx={{display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center'}}>
+                                <TableCell sx={{ display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center' }}>
                                     {props.actions(data)}
                                 </TableCell>
                                 : null
@@ -56,15 +61,17 @@ const DataTableLayout = (props: IDataTableProps) => {
                     }
                 </TableBody>
             </Table>
-            {props.data?.length ? <TablePagination
-                rowsPerPageOptions={[5, 10, 25]}
-                component="div"
-                count={props.data?.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />: null}
+            {props.data?.length ?
+                <TablePagination
+                    rowsPerPageOptions={[5, 10, 25]}
+                    component="div"
+                    count={props.data?.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                /> : null
+            }
         </TableContainer>
     )
 }
