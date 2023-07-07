@@ -1,34 +1,34 @@
 import React, { Component } from "react";
 import { AppComponent } from "../../../layouts/AppComponent";
-import TeachersScreenLayout from "..";
+import StudentsScreenLayout from "..";
 import { IUser } from "../../../../services/userService/userService";
 
-interface ITeachersScreenState {
-    teachers: IUser[]
+interface IStudentsScreenState {
+    students: IUser[]
 }
 
-class TeachersScreenContainer extends Component<any, ITeachersScreenState> {
+class StudentsScreenContainer extends Component<any, IStudentsScreenState> {
 
     constructor(props: any) {
         super(props)
 
         this.state = {
-            teachers: []
+            students: []
         }
     }
 
     componentDidMount() {
         //@ts-ignore
-        this.setState({ teachers: JSON.parse(localStorage.getItem('teachers')) })
+        this.setState({ students: JSON.parse(localStorage.getItem('students')) })
     }
 
     render() {
         return (
             <AppComponent>
-                <TeachersScreenLayout teachers={this.state.teachers} />
+                <StudentsScreenLayout students={this.state.students} />
             </AppComponent>
         )
     }
 }
 
-export default TeachersScreenContainer
+export default StudentsScreenContainer

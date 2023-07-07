@@ -1,4 +1,5 @@
 import { HomeScreen } from "../components/screens/homeScreen";
+import { StudentsScreen } from "../components/screens/studentsScreen";
 import { TeachersScreen } from "../components/screens/techersListScreen";
 
 export const routes = [
@@ -11,5 +12,10 @@ export const routes = [
         path: '/teachers-list',
         exact: true,
         element: <TeachersScreen />
+    },
+    {
+        path: '/students-list',
+        exact: true,
+        element: <StudentsScreen />
     },
 ]

@@ -9,9 +9,9 @@ const DataTableLayout = (props: IDataTableProps) => {
     const [rows, setRows] = useState<any[]>([])
 
     useEffect(() => {
-        const newData = props.data.slice(page * rowsPerPage, rowsPerPage * (page + 1))
+        const newData = props.data?.slice(page * rowsPerPage, rowsPerPage * (page + 1))
         setRows(newData)
-    }, [props.data ,page, rowsPerPage])
+    }, [props.data, page, rowsPerPage])
 
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
@@ -37,30 +37,34 @@ const DataTableLayout = (props: IDataTableProps) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map(data => (
+                    {rows?.length ? rows.map(data => (
                         <TableRow>
                             {props.keys.map(key => (
                                 <TableCell align="center">{data[key]}</TableCell>
                             ))}
                             {props.actions ?
-                                <TableCell align="center">
+                                <TableCell sx={{display: 'flex', gap: '10px', alignItems: 'center', justifyContent: 'center'}}>
                                     {props.actions(data)}
                                 </TableCell>
                                 : null
                             }
                         </TableRow>
-                    ))}
+                    )) :
+                        <TableRow>
+                            <TableCell align="center" colSpan={props.actions ? props.keys.length + 1 : props.keys.length}>No hay datos</TableCell>
+                        </TableRow>
+                    }
                 </TableBody>
             </Table>
-            <TablePagination
+            {props.data?.length ? <TablePagination
                 rowsPerPageOptions={[5, 10, 25]}
                 component="div"
-                count={props.data.length}
+                count={props.data?.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
-            />
+            />: null}
         </TableContainer>
     )
 }
