@@ -1,5 +1,5 @@
 export interface IUser {
-    id: number,
+    id: string,
     name: string
     lastName: string
     age: number
@@ -13,11 +13,12 @@ class UserService {
     createUser = (userData: IUser, role: string) => {
         // @ts-ignore
         let users = JSON.parse(localStorage.getItem(role))
+        const { v4: uuidv4 } = require('uuid');
 
         if (!users) {
             const newData = {
                 ...userData,
-                id: 1
+                id: uuidv4()
             }
             users = [newData]
             localStorage.setItem(role, JSON.stringify(users))
@@ -37,7 +38,7 @@ class UserService {
         } else {
             const newData = {
                 ...userData,
-                id: users[users?.length - 1].id + 1
+                id: uuidv4()
             }
             users.push(newData)
             localStorage.setItem(role, JSON.stringify(users))

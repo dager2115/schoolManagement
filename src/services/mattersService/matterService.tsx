@@ -1,5 +1,5 @@
 export interface IMatter {
-    id: number,
+    id: string,
     name: string
 }
 
@@ -9,11 +9,12 @@ class MatterService {
     createMatter = (matterData: IMatter) => {
         // @ts-ignore
         let matters = JSON.parse(localStorage.getItem('matters'))
+        const { v4: uuidv4 } = require('uuid');
 
         if (!matters) {
             const newData = {
                 ...matterData,
-                id: 1
+                id: uuidv4()
             }
             matters = [newData]
             localStorage.setItem('matters', JSON.stringify(matters))
@@ -33,7 +34,7 @@ class MatterService {
         } else {
             const newData = {
                 ...matterData,
-                id: matters[matters?.length - 1].id + 1
+                id: uuidv4()
             }
             matters.push(newData)
             localStorage.setItem('matters', JSON.stringify(matters))
