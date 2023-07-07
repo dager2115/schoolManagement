@@ -1,0 +1,38 @@
+.matters-screen-layout {
+    .header-action {
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        span {
+            display: flex;
+            align-items: center;
+            color: #069bdb;
+            cursor: pointer;
+
+            p {
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .info-screen {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+
+        p, h1 {
+            margin: 0;
+        }
+    }
+
+    .data-container {
+        display: flex;
+        width: 80vw;
+        margin: auto;
+    }
+
+}

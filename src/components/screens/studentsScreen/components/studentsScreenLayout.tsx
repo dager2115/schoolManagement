@@ -62,6 +62,7 @@ const StudentsScreenLayout = (props: IStudentsScreenProps) => {
                     data={studentList}
                     headerKeys={['Id', 'Nombre', 'Apellido', 'Edad', 'Direccion', 'Telefono']}
                     keys={['id', 'name', 'lastName', 'age', 'address', 'phone']}
+                    title="Listado de estudiantes"
                     actions={(data: any) => (
                         <>
                             <div style={{ cursor: 'pointer' }} onClick={() => editStudent(data)}>

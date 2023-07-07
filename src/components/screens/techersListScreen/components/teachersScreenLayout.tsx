@@ -63,6 +63,7 @@ const TeachersScreenLayout = (props: ITeachersScreenProps) => {
                     data={teachersList}
                     headerKeys={['Id', 'Nombre', 'Apellido', 'Edad', 'Direccion', 'Telefono']}
                     keys={['id', 'name', 'lastName', 'age', 'address', 'phone']}
+                    title="Listado de profesores"
                     actions={(data: any) => (
                         <div style={{cursor: 'pointer'}} onClick={() => editTeacher(data)}>
                             <EditIcon />
