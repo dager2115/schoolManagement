@@ -95,7 +95,7 @@ const QualificationScreenLayout = (props: IQualificationScreenProps) => {
                             <MenuItem
                                 value={period.id}
                             >
-                                {new Date(JSON.parse(period.year)).getFullYear()}
+                                {new Date(period.year).getFullYear()}
                             </MenuItem>
                         ))}
                     </TextField>

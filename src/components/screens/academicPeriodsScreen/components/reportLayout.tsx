@@ -65,7 +65,7 @@ const ReportLayout = (props: IReportProps) => {
                     <TableBody>
                         {rows.map(data => (
                             <TableRow>
-                                <TableCell align="center">{new Date(JSON.parse(data.year)).getFullYear()}</TableCell>
+                                <TableCell align="center">{new Date(data.year).getFullYear()}</TableCell>
                                 <TableCell align="center">{data.matter.student.code}</TableCell>
                                 <TableCell align="center">{data.matter.student.name}</TableCell>
                                 <TableCell align="center">{data.matter.code}</TableCell>

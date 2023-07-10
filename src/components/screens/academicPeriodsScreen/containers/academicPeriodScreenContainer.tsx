@@ -143,7 +143,7 @@ class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> 
     editPeriodData = (period: IAcademicPeriod) => {
         const editData = {
             ...period,
-            year: new Date(JSON.parse(period.year)),
+            year: new Date(period.year),
             matters: period.matters.map(matter => {
                 return {
                     ...this.state.matters.find(matterData => matterData.id === matter.matter),

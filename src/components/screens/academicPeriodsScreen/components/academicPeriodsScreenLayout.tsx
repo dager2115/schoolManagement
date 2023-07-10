@@ -38,7 +38,7 @@ const AcademicPeriodsScreenLayout = (props: IAcademicPeriodsScreenLayoutProps) =
                 ...period,
                 numberMatters: period.matters.length,
                 numberStudents: students.length,
-                yearFormat: new Date(JSON.parse(period.year)).getFullYear()
+                yearFormat: new Date(period.year).getFullYear()
             }
         }))
     }, [props.academicPeriods])

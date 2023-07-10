@@ -22,9 +22,9 @@ class AcademicPeriodService {
         //@ts-ignore
         let periods = JSON.parse(localStorage.getItem('periods'))
         if (!periods) {
-            periods = [{ ...periodData, id: uuidv4(), year: JSON.stringify(periodData.year) }]
+            periods = [{ ...periodData, id: uuidv4() }]
         } else if (!periodData.id) {
-            periods.push({ ...periodData, id: uuidv4(), year: JSON.stringify(periodData.year) })
+            periods.push({ ...periodData, id: uuidv4() })
         } else {
             periods = [...periods.filter((period: IAcademicPeriod) => period.id !== periodData.id), periodData]
         }
