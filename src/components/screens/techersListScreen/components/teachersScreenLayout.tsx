@@ -76,6 +76,7 @@ const TeachersScreenLayout = (props: ITeachersScreenProps) => {
                 close={handleSendInfo}
                 title="Profesor"
                 data={editData}
+                minAge={18}
             />
         </div>
     )

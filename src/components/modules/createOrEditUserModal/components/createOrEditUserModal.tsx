@@ -8,6 +8,7 @@ interface IModalProps {
     close: (data?: any) => void
     title: string
     data?: any
+    minAge: number
 }
 
 const style = {
@@ -69,9 +70,9 @@ const CreateOrEditUser = (props: IModalProps) => {
                     <Box sx={styleInputsContainer}>
                         <TextField id="outlined-required" required label='Nombre' name="name" value={data.name} onChange={handleChange} />
                         <TextField id="outlined-required" required label='Apellido' name="lastName" value={data.lastName} onChange={handleChange} />
-                        <TextField id="outlined-required" required label='Edad' type="number" name="age" value={data.age} onChange={handleChange} />
+                        <TextField inputProps={{min: props.minAge}} id="outlined-required" required label='Edad' type="number" name="age" value={data.age} onChange={handleChange} />
                         <TextField id="outlined-required" required label='Dirección ' name="address" value={data.address} onChange={handleChange} />
-                        <TextField id="outlined-required" required label='Teléfono ' type="number" name="phone" value={data.phone} onChange={handleChange} />
+                        <TextField placeholder="ejm: 311567890" inputProps={{pattern:"[0-9]{10}"}} id="outlined-required" required label='Teléfono ' type="tel" name="phone" value={data.phone} onChange={handleChange} />
                     </Box>
                     <Button variant="contained" type="submit">{props.data ? 'Editar' : 'Agregar'}</Button>
                 </Box>
