@@ -1,6 +1,9 @@
+import { generarCodeId } from "../../utils/commons";
+
 export interface IMatter {
     id: string,
-    name: string
+    name: string,
+    code: number
 }
 
 class MatterService {
@@ -14,7 +17,8 @@ class MatterService {
         if (!matters) {
             const newData = {
                 ...matterData,
-                id: uuidv4()
+                id: uuidv4(),
+                code: generarCodeId(0, 99999)
             }
             matters = [newData]
             localStorage.setItem('matters', JSON.stringify(matters))
@@ -25,7 +29,7 @@ class MatterService {
         }
 
         if (matterData.id) {
-            let dataNewMatters = [...matters.filter((user: any) => user.id !== matterData.id), matterData].sort((a, b) => a.id - b.id)
+            let dataNewMatters = [...matters.filter((user: any) => user.id !== matterData.id), matterData]
             localStorage.setItem('matters', JSON.stringify(dataNewMatters))
             return {
                 code: 200,
@@ -34,7 +38,8 @@ class MatterService {
         } else {
             const newData = {
                 ...matterData,
-                id: uuidv4()
+                id: uuidv4(),
+                code: generarCodeId(0, 99999)
             }
             matters.push(newData)
             localStorage.setItem('matters', JSON.stringify(matters))
@@ -42,6 +47,15 @@ class MatterService {
                 code: 200,
                 matters
             }
+        }
+    }
+
+    getMatters = () => {
+        // @ts-ignore
+        const matters = JSON.parse(localStorage.getItem('matters'))
+        return {
+            code: 200,
+            matters
         }
     }
 

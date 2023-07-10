@@ -23,7 +23,7 @@ const HomeScreenLayout = () => {
             name: 'Materias',
             route: '/matters-list'
         }, {
-            name: 'Periodos Academicos',
+            name: 'Periodos Académicos',
             route: '/periods'
         }, {
             name: 'Calificador',

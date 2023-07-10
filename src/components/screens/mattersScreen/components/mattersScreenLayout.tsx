@@ -90,8 +90,8 @@ const MattersScreenLayout = (props: MattersScreenLayoutProps) => {
             <div className="data-container">
                 <DataTable
                     data={mattersList}
-                    headerKeys={['Id', 'Nombre']}
-                    keys={['id', 'name']}
+                    headerKeys={['Codigo', 'Nombre']}
+                    keys={['code', 'name']}
                     title="Listado de materias"
                     actions={(data: any) => (
                         <div style={{ cursor: 'pointer' }} onClick={() => editMatter(data)}>

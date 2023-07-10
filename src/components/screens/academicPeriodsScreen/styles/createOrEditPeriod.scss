@@ -1,0 +1,119 @@
+.academic-period-editor-layout {
+    padding: 2rem;
+
+    .container {
+        box-shadow: 0px 3px 6px 0px rgba(16, 17, 18, 0.16);
+        border-radius: 12px;
+        padding: 2rem;
+
+        .header-editor {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h1 {
+                margin: 0;
+            }
+
+            margin-bottom: 1rem;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-weight: 700;
+                margin-bottom: 5px;
+            }
+
+        }
+
+        .first-info {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+
+            .year-picker {
+                border-radius: 4px;
+                padding: 16.5px 14px;
+                border: 1px #c0c0c0 solid;
+                font-size: 16px;
+
+                &:focus {
+                    outline: 1px #1976d2 solid;
+                }
+            }
+        }
+
+        .matters-config-container {
+            margin-top: 1rem;
+            width: calc(100% - 2rem);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .matter-collapse {
+                box-shadow: 0px 3px 6px 0px rgba(16, 17, 18, 0.16);
+                border-radius: 12px;
+                padding: 1rem;
+            }
+
+            .collapse-trigger {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                p {
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin: 0;
+                }
+            }
+
+            .matter-content {
+                padding-top: 1rem;
+
+                .header-info {
+                    display: flex;
+                    align-items: flex-end;
+                    gap: 1rem;
+                    justify-content: space-between;
+                }
+
+                .students-table {
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}
+
+.students-modal {
+    .modal-students-content {
+
+        .close-icon {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+        }
+
+        .student-list {
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            border: 1px solid #dadada;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        &:focus {
+            outline: 1px #1976d2 solid;
+        }
+    }
+}

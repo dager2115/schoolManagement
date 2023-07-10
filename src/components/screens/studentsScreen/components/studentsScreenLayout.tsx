@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import UserService, { IUser } from "../../../../services/userService/userService";
 import { updateStudentsAction } from "../../../../reducers/studentReducer/actions";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { fireConfirmDelete, fireSimpleMessage } from "../../../../utils/commons";
 
 interface IStudentsScreenProps {
     students: IUser[]
@@ -43,6 +44,20 @@ const StudentsScreenLayout = (props: IStudentsScreenProps) => {
         setOpenModal(true)
     }
 
+    const handleDeleteStudent = async (id: string) => {
+        const confirm = await fireConfirmDelete(undefined, 'Esta seguro de eliminar este estudiante? ')
+
+        if (confirm.isConfirmed) {
+            const response = userService.deleteUser(id, 'students')
+            if (response.code === 200) {
+                setStudentList(response.users)
+                dispatch(updateStudentsAction(response.users))
+            } else if(response.code === 403){
+                fireSimpleMessage('error', 'No puedes eliminar este usuario', 'El estudiante pertenece a una materia de un periodo académico')
+            }
+        }
+    }
+
 
     useEffect(() => {
         setStudentList(props.students)
@@ -60,15 +75,15 @@ const StudentsScreenLayout = (props: IStudentsScreenProps) => {
             <div className="data-container">
                 <DataTable
                     data={studentList}
-                    headerKeys={['Id', 'Nombre', 'Apellido', 'Edad', 'Direccion', 'Telefono']}
-                    keys={['id', 'name', 'lastName', 'age', 'address', 'phone']}
+                    headerKeys={['Codigo', 'Nombre', 'Apellido', 'Edad', 'Direccion', 'Telefono']}
+                    keys={['code', 'name', 'lastName', 'age', 'address', 'phone']}
                     title="Listado de estudiantes"
                     actions={(data: any) => (
                         <>
                             <div style={{ cursor: 'pointer' }} onClick={() => editStudent(data)}>
                                 <EditIcon />
                             </div>
-                            <div style={{ cursor: 'pointer' }} onClick={() => editStudent(data)}>
+                            <div style={{ cursor: 'pointer' }} onClick={() => handleDeleteStudent(data.id)}>
                                 <DeleteIcon />
                             </div>
                         </>
