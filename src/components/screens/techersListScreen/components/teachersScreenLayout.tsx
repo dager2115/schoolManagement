@@ -61,11 +61,11 @@ const TeachersScreenLayout = (props: ITeachersScreenProps) => {
             <div className="data-container">
                 <DataTable
                     data={teachersList}
-                    headerKeys={['Id', 'Nombre', 'Apellido', 'Edad', 'Direccion', 'Telefono']}
-                    keys={['id', 'name', 'lastName', 'age', 'address', 'phone']}
+                    headerKeys={['Codigo', 'Nombre', 'Apellido', 'Edad', 'Direccion', 'Telefono']}
+                    keys={['code', 'name', 'lastName', 'age', 'address', 'phone']}
                     title="Listado de profesores"
                     actions={(data: any) => (
-                        <div style={{cursor: 'pointer'}} onClick={() => editTeacher(data)}>
+                        <div style={{ cursor: 'pointer' }} onClick={() => editTeacher(data)}>
                             <EditIcon />
                         </div>
                     )}

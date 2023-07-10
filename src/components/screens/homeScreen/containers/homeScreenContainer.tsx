@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import HomeScreenLayout from '..'
 import { AppComponent } from '../../../layouts/AppComponent'
 import { IUser } from '../../../../services/userService/userService'
-import { connect } from 'react-redux'
-import store from '../../../../store/redux-storage'
-import { updateTeachersAction } from '../../../../reducers/teacherReducer/actions'
-import { updateStudentsAction } from '../../../../reducers/studentReducer/actions'
 import { IMatter } from '../../../../services/mattersService/matterService'
-import { updateMattersAction } from '../../../../reducers/mattersReducer/actions'
+import { generarCodeId } from '../../../../utils/commons'
 
 class HomeScreenContainer extends Component<any> {
 
@@ -22,7 +18,8 @@ class HomeScreenContainer extends Component<any> {
                     lastName: "prueba1",
                     age: 30,
                     address: "calle 1 # 1-1",
-                    phone: 3102949274
+                    phone: 3102949274,
+                    code: generarCodeId(0, 99999)
                 },
                 {
                     id: uuidv4(),
@@ -30,11 +27,11 @@ class HomeScreenContainer extends Component<any> {
                     lastName: "prueba2",
                     age: 30,
                     address: "calle 1 # 1-1",
-                    phone: 3124787265
+                    phone: 3124787265,
+                    code: generarCodeId(0, 99999)
                 },
             ]
             localStorage.setItem('teachers', JSON.stringify(newTeachers))
-            store.dispatch(updateTeachersAction(newTeachers))
         }
         const students = localStorage.getItem('students')
         if (!students) {
@@ -45,7 +42,8 @@ class HomeScreenContainer extends Component<any> {
                     lastName: "prueba1",
                     age: 20,
                     address: "calle 1 # 1-1",
-                    phone: 3102949274
+                    phone: 3102949274,
+                    code: generarCodeId(0, 99999)
                 },
                 {
                     id: uuidv4(),
@@ -53,26 +51,27 @@ class HomeScreenContainer extends Component<any> {
                     lastName: "prueba2",
                     age: 20,
                     address: "calle 1 # 1-1",
-                    phone: 3124787265
+                    phone: 3124787265,
+                    code: generarCodeId(0, 99999)
                 },
             ]
             localStorage.setItem('students', JSON.stringify(newStudents))
-            store.dispatch(updateStudentsAction(newStudents))
         }
         const matters = localStorage.getItem('matters')
         if (!matters) {
             const newMatters: IMatter[] = [
                 {
                     id: uuidv4(),
-                    name: "Matemáticas"
+                    name: "Matemáticas",
+                    code: generarCodeId(0, 99999)
                 },
                 {
                     id: uuidv4(),
-                    name: "Español"
+                    name: "Español",
+                    code: generarCodeId(0, 99999)
                 },
             ]
             localStorage.setItem('matters', JSON.stringify(newMatters))
-            store.dispatch(updateMattersAction(newMatters))
         }
     }
 
@@ -85,4 +84,4 @@ class HomeScreenContainer extends Component<any> {
     }
 }
 
-export default connect()(HomeScreenContainer)
+export default HomeScreenContainer

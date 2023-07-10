@@ -4,7 +4,7 @@ const initialState: types.IMattersState = {
     matters: []
 }
 
-export function studentsReducers(
+export function mattersReducers(
     state = initialState,
     action: types.IMattersTypes
 ): types.IMattersState {

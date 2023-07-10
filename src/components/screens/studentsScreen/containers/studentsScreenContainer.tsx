@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { AppComponent } from "../../../layouts/AppComponent";
 import StudentsScreenLayout from "..";
-import { IUser } from "../../../../services/userService/userService";
+import UserService, { IUser } from "../../../../services/userService/userService";
 
 interface IStudentsScreenState {
     students: IUser[]
 }
 
 class StudentsScreenContainer extends Component<any, IStudentsScreenState> {
+
+    private userService = new UserService()
 
     constructor(props: any) {
         super(props)
@@ -18,8 +20,14 @@ class StudentsScreenContainer extends Component<any, IStudentsScreenState> {
     }
 
     componentDidMount() {
-        //@ts-ignore
-        this.setState({ students: JSON.parse(localStorage.getItem('students')) })
+        this.getStudents()
+    }
+
+    getStudents = () => {
+        const response = this.userService.getUsers('students')
+        if (response.code === 200) {
+            this.setState({ students: response.users })
+        }
     }
 
     render() {

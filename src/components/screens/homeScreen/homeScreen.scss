@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 5rem);
+    min-height: calc(100vh - 5rem);
 
     .sections-list {
         display: grid;
@@ -12,5 +12,13 @@
         gap: 30px;
         width: 70%;
         height: 60%;
+    }
+
+    // ================ Breakpoints ================
+
+    @media screen and (max-width: 767px) {
+        .sections-list {
+            grid-template-columns: 100%;
+        }
     }
 }

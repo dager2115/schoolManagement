@@ -1,3 +1,4 @@
+import { AcademicPeriodsScreen } from "../components/screens/academicPeriodsScreen";
 import { HomeScreen } from "../components/screens/homeScreen";
 import { MattersScreen } from "../components/screens/mattersScreen";
 import { StudentsScreen } from "../components/screens/studentsScreen";
@@ -23,5 +24,10 @@ export const routes = [
         path: '/matters-list',
         exact: true,
         element: <MattersScreen />
+    },
+    {
+        path: '/periods',
+        exact: true,
+        element: <AcademicPeriodsScreen />
     },
 ]
