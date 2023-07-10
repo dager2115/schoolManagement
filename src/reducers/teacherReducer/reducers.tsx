@@ -11,6 +11,7 @@ export function teacherReducers(
     switch (action.type) {
         case types.UPDATE_TEACHERS:
             return {
+                ...state,
                 teachers: action.payload
             }
 

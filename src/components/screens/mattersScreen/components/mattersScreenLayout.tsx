@@ -4,14 +4,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useNavigate } from 'react-router-dom';
-import { Modal, Box, TextField, Typography, Button } from '@mui/material';
+import { Modal, Box, TextField, Typography, Button, Tooltip } from '@mui/material';
 import { useDispatch } from "react-redux";
 import CloseIcon from '@mui/icons-material/Close';
 
 import '../mattersScreen.scss'
 import MatterService, { IMatter } from "../../../../services/mattersService/matterService";
 import { updateMattersAction } from "../../../../reducers/mattersReducer/actions";
-
+import ArticleIcon from '@mui/icons-material/Article';
 interface MattersScreenLayoutProps {
     matters: IMatter[]
 }
@@ -90,13 +90,20 @@ const MattersScreenLayout = (props: MattersScreenLayoutProps) => {
             <div className="data-container">
                 <DataTable
                     data={mattersList}
-                    headerKeys={['Codigo', 'Nombre']}
+                    headerKeys={['Código', 'Nombre']}
                     keys={['code', 'name']}
                     title="Listado de materias"
                     actions={(data: any) => (
-                        <div style={{ cursor: 'pointer' }} onClick={() => editMatter(data)}>
-                            <EditIcon />
-                        </div>
+                        <>
+                            <div style={{ cursor: 'pointer' }} onClick={() => editMatter(data)}>
+                                <EditIcon />
+                            </div>
+                            <div style={{ cursor: 'pointer' }} onClick={() => editMatter(data)}>
+                                <Tooltip title='Generar reporte' placement="top">
+                                    <ArticleIcon />
+                                </Tooltip>
+                            </div>
+                        </>
                     )}
                 />
             </div>

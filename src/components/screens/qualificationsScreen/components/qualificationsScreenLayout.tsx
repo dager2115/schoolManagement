@@ -6,6 +6,8 @@ import { Button, MenuItem, Paper, Table, TableBody, TableCell, TableContainer, T
 import AcademicPeriodService, { IAcademicPeriod } from '../../../../services/academicPeriodService/academicPeriodService';
 import { IMatter } from '../../../../services/mattersService/matterService';
 import { fireSimpleMessage } from '../../../../utils/commons';
+import { useDispatch } from 'react-redux';
+import { updatePeriodsAction } from '../../../../reducers/periodsReducer/actions';
 
 interface IQualificationScreenProps {
     periods: IAcademicPeriod[]
@@ -13,6 +15,8 @@ interface IQualificationScreenProps {
 }
 
 const QualificationScreenLayout = (props: IQualificationScreenProps) => {
+
+    const dispatch = useDispatch()
 
     const [selectedPeriod, setSelectedPeriod] = useState<any | undefined>()
     const [matterSelected, setMatterSelected] = useState<any | undefined>()
@@ -23,6 +27,7 @@ const QualificationScreenLayout = (props: IQualificationScreenProps) => {
     const setPeriod = (id: string) => {
         const newData = props.getPeriodData(id)
         setSelectedPeriod(newData)
+        if(matterSelected) setMatterSelected(undefined)
     }
 
     const setMatter = (id: string) => {
@@ -52,6 +57,7 @@ const QualificationScreenLayout = (props: IQualificationScreenProps) => {
             matters: selectedPeriod.matters.map((matter: any) => {
                 return {
                     matter: matter.id,
+                    teacher: matter.teacher,
                     students: matter.students.map((student: any) => {
                         return {
                             student: student.id,
@@ -64,6 +70,7 @@ const QualificationScreenLayout = (props: IQualificationScreenProps) => {
         const response = academicPeriodService.createOrEditPeriod(newData)
         if(response.code === 200) {
             fireSimpleMessage('success', 'Guardado con exito')
+            dispatch(updatePeriodsAction(response.periods))
         }
     }
 
@@ -100,6 +107,7 @@ const QualificationScreenLayout = (props: IQualificationScreenProps) => {
                             select
                             sx={{ width: '216px' }}
                             onChange={(e) => setMatter(e.target.value)}
+                            value={matterSelected?.id || ''}
                         >
                             {selectedPeriod.matters.map((matter: any) => (
                                 <MenuItem
@@ -119,7 +127,7 @@ const QualificationScreenLayout = (props: IQualificationScreenProps) => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Nombre</TableCell>
-                                    <TableCell>Codigo</TableCell>
+                                    <TableCell>Código</TableCell>
                                     <TableCell align='right'>Calificación</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -133,7 +141,7 @@ const QualificationScreenLayout = (props: IQualificationScreenProps) => {
                                                 size='small'
                                                 type='number'
                                                 onChange={(e) => handleChangeQualification(e, index)}
-                                                value={selectedPeriod.matters[matterSelected.index].students[index].qualification}
+                                                value={selectedPeriod.matters[matterSelected.index].students[index].qualification || ''}
                                             />
                                         </TableCell>
                                     </TableRow>

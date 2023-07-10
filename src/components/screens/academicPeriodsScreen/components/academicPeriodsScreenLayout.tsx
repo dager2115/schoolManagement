@@ -13,6 +13,7 @@ interface IAcademicPeriodsScreenLayoutProps {
     academicPeriods: IAcademicPeriod[]
     addNewPeriod: () => void
     editPeriodData: (data: IAcademicPeriod) => void
+    getReportData: () => void
 }
 
 const AcademicPeriodsScreenLayout = (props: IAcademicPeriodsScreenLayoutProps) => {
@@ -49,7 +50,10 @@ const AcademicPeriodsScreenLayout = (props: IAcademicPeriodsScreenLayoutProps) =
                     <ArrowBackIosNewIcon />
                     <Typography variant='h5'>Lista de periodos</Typography>
                 </span>
-                <Button startIcon={<AddIcon />} variant="outlined" onClick={props.addNewPeriod}>Agregar periodo</Button>
+                <div>
+                    <Button startIcon={<AddIcon />} variant="outlined" onClick={props.addNewPeriod}>Agregar periodo</Button>
+                    <Button sx={{marginLeft: 1}} variant='contained' onClick={props.getReportData}>generar reporte</Button>
+                </div>
             </div>
             <div className="data-container">
                 <DataTable

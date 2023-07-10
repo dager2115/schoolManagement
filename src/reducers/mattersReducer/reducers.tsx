@@ -11,6 +11,7 @@ export function mattersReducers(
     switch (action.type) {
         case types.UPDATE_MATTERS:
             return {
+                ...state,
                 matters: action.payload
             }
 
