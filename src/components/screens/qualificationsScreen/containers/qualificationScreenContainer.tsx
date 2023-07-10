@@ -4,8 +4,6 @@ import QualificationScreenLayout from "..";
 import store from "../../../../store/redux-storage";
 import AcademicPeriodService, { IAcademicPeriod } from "../../../../services/academicPeriodService/academicPeriodService";
 import { updatePeriodsAction } from "../../../../reducers/periodsReducer/actions";
-import MatterService, { IMatter } from "../../../../services/mattersService/matterService";
-import { updateMattersAction } from "../../../../reducers/mattersReducer/actions";
 
 interface IQualificationScreenState {
     periods: IAcademicPeriod[]
@@ -14,7 +12,6 @@ interface IQualificationScreenState {
 class QualificationScreenContainer extends Component<any, IQualificationScreenState> {
 
     private academicPeriodService = new AcademicPeriodService()
-    private matterService = new MatterService()
 
     constructor(props: any) {
         super(props)

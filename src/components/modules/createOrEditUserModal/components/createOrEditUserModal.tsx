@@ -70,8 +70,8 @@ const CreateOrEditUser = (props: IModalProps) => {
                         <TextField id="outlined-required" required label='Nombre' name="name" value={data.name} onChange={handleChange} />
                         <TextField id="outlined-required" required label='Apellido' name="lastName" value={data.lastName} onChange={handleChange} />
                         <TextField id="outlined-required" required label='Edad' type="number" name="age" value={data.age} onChange={handleChange} />
-                        <TextField id="outlined-required" required label='Direccion' name="address" value={data.address} onChange={handleChange} />
-                        <TextField id="outlined-required" required label='Telefono' type="number" name="phone" value={data.phone} onChange={handleChange} />
+                        <TextField id="outlined-required" required label='Dirección ' name="address" value={data.address} onChange={handleChange} />
+                        <TextField id="outlined-required" required label='Teléfono ' type="number" name="phone" value={data.phone} onChange={handleChange} />
                     </Box>
                     <Button variant="contained" type="submit">{props.data ? 'Editar' : 'Agregar'}</Button>
                 </Box>

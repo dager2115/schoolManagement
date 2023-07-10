@@ -7,7 +7,7 @@ export interface IMatter {
 }
 
 class MatterService {
-    constructor(){}
+    constructor() { }
 
     createMatter = (matterData: IMatter) => {
         // @ts-ignore

@@ -11,6 +11,7 @@ export function periodsReducer(
     switch (action.type) {
         case types.UPDATE_PERIODS:
             return {
+                ...state,
                 periods: action.payload
             }
 

@@ -1,0 +1,23 @@
+.report-layout {
+    min-height: calc(100vh - 5rem);
+    padding: 1rem;
+
+    .header-action {
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+            display: flex;
+            align-items: center;
+            color: #069bdb;
+            cursor: pointer;
+
+            p {
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+    }
+}

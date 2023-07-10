@@ -11,14 +11,34 @@ import { connect } from 'react-redux'
 import { updateTeachersAction } from '../../../../reducers/teacherReducer/actions'
 import { updateMattersAction } from '../../../../reducers/mattersReducer/actions'
 import { updatePeriodsAction } from '../../../../reducers/periodsReducer/actions'
+import ReportLayout from '../components/reportLayout'
 
 interface IAcademiPeriodScreen {
     academicPeriods: IAcademicPeriod[]
-    view: 'list' | 'editor'
+    view: 'list' | 'editor' | 'report'
     editPeriodData?: any | null
     matters: IMatter[]
     teachers: IUser[]
     students: IUser[]
+    reportData: IReportData[]
+}
+
+export interface IReportData {
+    year: Date
+    matter: {
+        name: string
+        code: number
+        teacher: {
+            name: string
+            code: number
+        },
+        student: {
+            name: string
+            code: number
+            qualification: number
+            approved: boolean
+        }
+    }
 }
 
 class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> {
@@ -36,7 +56,8 @@ class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> 
             editPeriodData: null,
             matters: [],
             students: [],
-            teachers: []
+            teachers: [],
+            reportData: []
         }
     }
 
@@ -47,7 +68,7 @@ class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> 
         this.getPeriods()
     }
 
-    changeView = (view: 'list' | 'editor') => {
+    changeView = (view: 'list' | 'editor' | 'report') => {
         this.setState({ view: view })
     }
 
@@ -115,7 +136,7 @@ class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> 
         const response = this.academicPeriodService.createOrEditPeriod(data)
         if (response.code === 200) {
             this.setState({ academicPeriods: response.periods, view: 'list' })
-            store.dispatch(updateStudentsAction(response.periods))
+            store.dispatch(updatePeriodsAction(response.periods))
         }
     }
 
@@ -124,17 +145,18 @@ class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> 
             ...period,
             matters: period.matters.map(matter => {
                 return {
-                    ...this.state.matters.find(matterData => matterData.id ===  matter.matter),
+                    ...this.state.matters.find(matterData => matterData.id === matter.matter),
                     teacher: matter.teacher,
                     students: matter.students.map(student => {
                         return {
-                            ...this.state.students.find(studentData => studentData.id === student.student)
+                            ...this.state.students.find(studentData => studentData.id === student.student),
+                            qualification: student.qualification
                         }
                     })
                 }
             })
         }
-        this.setState({editPeriodData: editData, view: 'editor'})
+        this.setState({ editPeriodData: editData, view: 'editor' })
     }
 
     handleCancel = () => {
@@ -142,6 +164,13 @@ class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> 
             editPeriodData: null,
             view: 'list',
         })
+    }
+
+    getReportData = () => {
+        const response = this.academicPeriodService.getReportData()
+        if (response.code === 200) {
+            this.setState({reportData: response.reportData, view: 'report'})
+        }
     }
 
     render() {
@@ -152,6 +181,7 @@ class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> 
                         academicPeriods={this.state.academicPeriods}
                         addNewPeriod={this.addNewPeriod}
                         editPeriodData={this.editPeriodData}
+                        getReportData={this.getReportData}
                     />
                     : null
                 }
@@ -163,6 +193,13 @@ class AcademiPeriodScreenContainer extends Component<any, IAcademiPeriodScreen> 
                         savePeriodData={this.savePeriodData}
                         editPeriodData={this.state.editPeriodData}
                         handleCancel={this.handleCancel}
+                    />
+                    : null
+                }
+                {this.state.view === 'report' ?
+                    <ReportLayout
+                        reportData={this.state.reportData}
+                        back={() => this.changeView('list')}
                     />
                     : null
                 }

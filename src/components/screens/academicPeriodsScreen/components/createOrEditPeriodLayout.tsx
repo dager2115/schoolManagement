@@ -73,7 +73,7 @@ const CreateOrEditPeriodLayout = (props: IEditorProps) => {
 
     const addTeacher = (matterIndex: number, teacherId: string) => {
         let newData: IAcademicPeriod = { ...periodData }
-        newData.matters[matterIndex].teacher = teacherId
+        newData.matters[matterIndex]['teacher'] = teacherId
         setPeriodData(newData)
     }
 
@@ -133,27 +133,54 @@ const CreateOrEditPeriodLayout = (props: IEditorProps) => {
 
     const handleSavePeriod = () => {
         if (!periodData.year) {
-            return fireSimpleMessage('error', undefined, 'No puedes crear un periodo sin un año')
+            return fireSimpleMessage('error', 'No se pudo crear el periodo', 'No puedes crear un periodo sin un año')
         }
+        if (!periodData.matters?.length) {
+            return fireSimpleMessage('error', 'No se pudo crear el periodo', 'debes agregar materias al periodo')
+        }
+
         let validateTeachers: boolean = true
+        let validateStudents: boolean = true
         periodData.matters?.forEach((matter: any) => {
             if (!matter.teacher) {
                 validateTeachers = false
+            }
+            if (!matter.students?.length) {
+                validateStudents = false
             }
         })
         if (!validateTeachers) {
             return fireSimpleMessage('error', 'No se pudo crear el periodo', 'tienes materias sin profesor asignado')
         }
-        const newData = {
-            ...periodData,
-            matters: periodData.matters.map((matter: any) => {
-                const newItem = {
-                    matter: matter.id,
-                    teacher: matter.teacher,
-                    students: matter.students.map((student: any) => ({ student: student.id, qualification: null }))
-                }
-                return newItem
-            })
+        if (!validateStudents) {
+            return fireSimpleMessage('error', 'No se pudo crear el periodo', 'tienes materias sin estudiantes asignados')
+        }
+        let newData
+        if (props.editPeriodData) {
+            newData = {
+                id: periodData.id,
+                year: periodData.year,
+                matters: periodData.matters.map((matter: any) => {
+                    const newItem = {
+                        matter: matter.id,
+                        teacher: matter.teacher,
+                        students: matter.students.map((student: any) => ({ student: student.id, qualification: student.qualification || null }))
+                    }
+                    return newItem
+                })
+            }
+        } else {
+            newData = {
+                ...periodData,
+                matters: periodData.matters.map((matter: any) => {
+                    const newItem = {
+                        matter: matter.id,
+                        teacher: matter.teacher,
+                        students: matter.students.map((student: any) => ({ student: student.id, qualification: student.qualification || null }))
+                    }
+                    return newItem
+                })
+            }
         }
         props.savePeriodData(newData)
     }
