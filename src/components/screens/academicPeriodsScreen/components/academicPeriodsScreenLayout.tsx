@@ -38,7 +38,7 @@ const AcademicPeriodsScreenLayout = (props: IAcademicPeriodsScreenLayoutProps) =
                 ...period,
                 numberMatters: period.matters.length,
                 numberStudents: students.length,
-                yearFormat: new Date(period.year).getFullYear()
+                yearFormat: new Date(JSON.parse(period.year)).getFullYear()
             }
         }))
     }, [props.academicPeriods])
@@ -52,7 +52,7 @@ const AcademicPeriodsScreenLayout = (props: IAcademicPeriodsScreenLayoutProps) =
                 </span>
                 <div>
                     <Button startIcon={<AddIcon />} variant="outlined" onClick={props.addNewPeriod}>Agregar periodo</Button>
-                    <Button sx={{marginLeft: 1}} variant='contained' onClick={props.getReportData}>generar reporte</Button>
+                    <Button disabled={props.academicPeriods.length ? false : true} sx={{marginLeft: 1}} variant='contained' onClick={props.getReportData}>generar reporte</Button>
                 </div>
             </div>
             <div className="data-container">

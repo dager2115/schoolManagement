@@ -14,8 +14,8 @@ class HomeScreenContainer extends Component<any> {
             const newTeachers: IUser[] = [
                 {
                     id: uuidv4(),
-                    name: "teacher",
-                    lastName: "prueba1",
+                    name: "German",
+                    lastName: "Perez",
                     age: 30,
                     address: "calle 1 # 1-1",
                     phone: 3102949274,
@@ -23,8 +23,8 @@ class HomeScreenContainer extends Component<any> {
                 },
                 {
                     id: uuidv4(),
-                    name: "teacher",
-                    lastName: "prueba2",
+                    name: "Francisco",
+                    lastName: "Lopez",
                     age: 30,
                     address: "calle 1 # 1-1",
                     phone: 3124787265,
@@ -38,8 +38,8 @@ class HomeScreenContainer extends Component<any> {
             const newStudents: IUser[] = [
                 {
                     id: uuidv4(),
-                    name: "student",
-                    lastName: "prueba1",
+                    name: "Juan",
+                    lastName: "Molina",
                     age: 20,
                     address: "calle 1 # 1-1",
                     phone: 3102949274,
@@ -47,8 +47,8 @@ class HomeScreenContainer extends Component<any> {
                 },
                 {
                     id: uuidv4(),
-                    name: "student",
-                    lastName: "prueba2",
+                    name: "Pablo",
+                    lastName: "Mateus",
                     age: 20,
                     address: "calle 1 # 1-1",
                     phone: 3124787265,

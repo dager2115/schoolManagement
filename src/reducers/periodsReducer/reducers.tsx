@@ -12,7 +12,10 @@ export function periodsReducer(
         case types.UPDATE_PERIODS:
             return {
                 ...state,
-                periods: action.payload
+                periods: action.payload.map(period => ({
+                    ...period,
+                    year: typeof period.year === 'string' ? period.year : JSON.stringify(period.year)
+                }))
             }
 
         default:

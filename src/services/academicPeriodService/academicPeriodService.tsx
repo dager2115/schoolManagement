@@ -2,7 +2,7 @@ import { IMatter } from "../mattersService/matterService"
 
 export interface IAcademicPeriod {
     id: string
-    year: Date
+    year: string 
     matters: {
         matter: string,
         teacher: string,
@@ -22,9 +22,9 @@ class AcademicPeriodService {
         //@ts-ignore
         let periods = JSON.parse(localStorage.getItem('periods'))
         if (!periods) {
-            periods = [{ ...periodData, id: uuidv4() }]
+            periods = [{ ...periodData, id: uuidv4(), year: JSON.stringify(periodData.year) }]
         } else if (!periodData.id) {
-            periods.push({ ...periodData, id: uuidv4() })
+            periods.push({ ...periodData, id: uuidv4(), year: JSON.stringify(periodData.year) })
         } else {
             periods = [...periods.filter((period: IAcademicPeriod) => period.id !== periodData.id), periodData]
         }
