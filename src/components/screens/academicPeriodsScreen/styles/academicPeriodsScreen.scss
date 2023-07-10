@@ -1,10 +1,16 @@
 .academic-periods-screen-layout {
+    padding: 1rem;
+
     .header-action {
-        height: 5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 1rem;
+        margin-bottom: 1rem;
+
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+        }
 
         span {
             display: flex;
@@ -24,7 +30,8 @@
         flex-direction: column;
         padding: 2rem;
 
-        p, h1 {
+        p,
+        h1 {
             margin: 0;
         }
     }
@@ -35,4 +42,23 @@
         margin: auto;
     }
 
+    @media screen and (max-width: 767px) {
+        .header-action {
+            flex-direction: column;
+            align-items: flex-start;
+
+            h5 {
+                font-size: 1rem;
+            }
+
+            .buttons-container {
+                padding: 1rem;
+
+                button {
+                    width: 100%;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
 }

@@ -50,9 +50,9 @@ const AcademicPeriodsScreenLayout = (props: IAcademicPeriodsScreenLayoutProps) =
                     <ArrowBackIosNewIcon />
                     <Typography variant='h5'>Lista de periodos</Typography>
                 </span>
-                <div>
+                <div className='buttons-container'>
                     <Button startIcon={<AddIcon />} variant="outlined" onClick={props.addNewPeriod}>Agregar periodo</Button>
-                    <Button disabled={props.academicPeriods.length ? false : true} sx={{marginLeft: 1}} variant='contained' onClick={props.getReportData}>generar reporte</Button>
+                    <Button disabled={props.academicPeriods.length ? false : true} variant='contained' onClick={props.getReportData}>generar reporte</Button>
                 </div>
             </div>
             <div className="data-container">

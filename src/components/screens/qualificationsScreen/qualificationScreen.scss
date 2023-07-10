@@ -46,4 +46,17 @@
     .students-list-container {
         padding: 1rem;
     }
+
+    @media screen and (max-width: 767px) {
+        .header-action {
+            h5 {
+                font-size: 1rem;
+            }
+        }
+
+        .filters {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
 }

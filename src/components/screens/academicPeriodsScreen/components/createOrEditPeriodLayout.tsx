@@ -197,7 +197,7 @@ const CreateOrEditPeriodLayout = (props: IEditorProps) => {
                 <div className="header-editor">
                     <h1>{props.editPeriodData ? 'Editar' : 'Crear'} Periodo</h1>
                     <div className="actions">
-                        <Button variant='contained' sx={{ marginRight: '5px' }} onClick={props.handleCancel}>cancelar</Button>
+                        <Button variant='contained' onClick={props.handleCancel}>cancelar</Button>
                         <Button variant='outlined' onClick={handleSavePeriod}>guardar</Button>
                     </div>
                 </div>

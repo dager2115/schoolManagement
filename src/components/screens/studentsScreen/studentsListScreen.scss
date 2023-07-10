@@ -25,4 +25,11 @@
         margin: auto;
     }
 
+    @media screen and (max-width: 767px) {
+        .header-action {
+            h5 {
+                font-size: 1rem;
+            }
+        }
+    }
 }
