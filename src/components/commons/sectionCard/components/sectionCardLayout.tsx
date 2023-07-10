@@ -6,7 +6,8 @@ import '../sectionCard.scss'
 const SectionCardLayout = (props: ISectionCardComponentProps) => {
     return (
         <div className="section-card" onClick={props.onClick}>
-            <h1>{props.name}</h1>
+            {props.icon}
+            <h3>{props.name}</h3>
         </div>
     )
 }

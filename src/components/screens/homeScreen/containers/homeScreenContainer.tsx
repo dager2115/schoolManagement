@@ -4,7 +4,6 @@ import { AppComponent } from '../../../layouts/AppComponent'
 import { IUser } from '../../../../services/userService/userService'
 import { IMatter } from '../../../../services/mattersService/matterService'
 import { generarCodeId } from '../../../../utils/commons'
-
 class HomeScreenContainer extends Component<any> {
 
     componentDidMount() {
