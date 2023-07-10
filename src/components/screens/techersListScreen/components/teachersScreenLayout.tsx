@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DataTable } from "../../../commons/dataTable";
 import TeachersService, { IUser } from "../../../../services/userService/userService";
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,7 @@ const TeachersScreenLayout = (props: ITeachersScreenProps) => {
             <div className="header-action">
                 <span onClick={() => navigate('/')}>
                     <ArrowBackIosNewIcon />
-                    <p>atras</p>
+                    <Typography variant='h5'>Lista de profesores</Typography>
                 </span>
                 <Button startIcon={<AddIcon />} variant="outlined" onClick={() => setOpenModal(true)}>Agregar profesor</Button>
             </div>

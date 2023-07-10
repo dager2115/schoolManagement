@@ -1,6 +1,7 @@
 import { AcademicPeriodsScreen } from "../components/screens/academicPeriodsScreen";
 import { HomeScreen } from "../components/screens/homeScreen";
 import { MattersScreen } from "../components/screens/mattersScreen";
+import { QualificationScreen } from "../components/screens/qualificationsScreen";
 import { StudentsScreen } from "../components/screens/studentsScreen";
 import { TeachersScreen } from "../components/screens/techersListScreen";
 
@@ -29,5 +30,10 @@ export const routes = [
         path: '/periods',
         exact: true,
         element: <AcademicPeriodsScreen />
+    },
+    {
+        path: '/qualification-tool',
+        exact: true,
+        element: <QualificationScreen />
     },
 ]

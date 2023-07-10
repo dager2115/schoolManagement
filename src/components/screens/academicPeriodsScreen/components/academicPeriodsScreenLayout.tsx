@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { IAcademicPeriod } from '../../../../services/academicPeriodService/academicPeriodService'
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../../../commons/dataTable';
 import EditIcon from '@mui/icons-material/Edit';
@@ -47,7 +47,7 @@ const AcademicPeriodsScreenLayout = (props: IAcademicPeriodsScreenLayoutProps) =
             <div className="header-action">
                 <span onClick={() => navigate('/')}>
                     <ArrowBackIosNewIcon />
-                    <p>atras</p>
+                    <Typography variant='h5'>Lista de periodos</Typography>
                 </span>
                 <Button startIcon={<AddIcon />} variant="outlined" onClick={props.addNewPeriod}>Agregar periodo</Button>
             </div>

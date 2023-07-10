@@ -83,7 +83,7 @@ const MattersScreenLayout = (props: MattersScreenLayoutProps) => {
             <div className="header-action">
                 <span onClick={() => navigate('/')}>
                     <ArrowBackIosNewIcon />
-                    <p>atras</p>
+                    <Typography variant='h5'>Lista de materias</Typography>
                 </span>
                 <Button startIcon={<AddIcon />} variant="outlined" onClick={handleAddMatter}>Agregar materia</Button>
             </div>

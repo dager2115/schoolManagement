@@ -1,0 +1,49 @@
+.qualification-screen-layout {
+    padding: 1rem;
+
+    .header-action {
+        display: flex;
+        padding: 1rem 0;
+        align-items: center;
+        justify-content: space-between;
+
+        h3 {
+            font-weight: 700;
+            color: #069bdb;
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            color: #069bdb;
+            cursor: pointer;
+
+            p {
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+    }
+
+    .filters {
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .students-list-container {
+        padding: 1rem;
+    }
+}
